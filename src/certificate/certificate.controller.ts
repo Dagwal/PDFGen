@@ -11,11 +11,9 @@ export class CertificateController {
   async generateCertificate(
     @Res() res: Response,
     @Query('userName') userName: string,
-    @Query('signerName1') signerName1: string,
-    @Query('signerName2') signerName2: string,
   ): Promise<void> {
     try {
-      const certificateData = { userName, signerName1, signerName2 };
+      const certificateData = { userName };
       const pdfStream: Readable = await this.certificateService.generateCertificate(certificateData);
 
       // Set up the response headers
